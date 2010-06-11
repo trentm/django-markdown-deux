@@ -2,11 +2,12 @@ A small Django app that provides template tags for using
 [Markdown](http://daringfireball.net/projects/markdown/) using the
 [python-markdown2](http://code.google.com/p/python-markdown2/) library.
 
-# What with the "deux" in the name?
+# What's with the "deux" in the name?
 
 The obvious name for this project in `django-markdown2`. However, there
 [already is one!](http://github.com/svetlyak40wt/django-markdown2) and name
-confusion doesn't help anybody.
+confusion doesn't help anybody. Plus, I took French immersion in school for 12
+years: might as well put it to use.
 
 # So why another project then?
 
