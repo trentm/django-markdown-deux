@@ -61,10 +61,9 @@ class MarkdownNode(template.Node):
             return force_unicode(value)
 
 
-#TODO
-#@register.inclusion_tag("markdown_deux/markdown_cheatsheet.html")
-#def markdown_cheatsheet():
-#    return {}
+@register.inclusion_tag("markdown_deux/markdown_cheatsheet.html")
+def markdown_cheatsheet():
+    return {"help_url": settings.MARKDOWN_DEUX_HELP_URL}
 
 
 @register.simple_tag
