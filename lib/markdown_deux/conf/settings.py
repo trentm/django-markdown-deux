@@ -2,7 +2,8 @@
 
 from django.conf import settings
 
-MARKDOWN_DEUX_HELP_URL = "http://daringfireball.net/projects/markdown/syntax"
+MARKDOWN_DEUX_HELP_URL = getattr(settings, "MARKDOWN_DEUX_HELP_URL",
+    "http://daringfireball.net/projects/markdown/syntax")
 
 MARKDOWN_DEUX_DEFAULT_STYLE = {
     "extras": {
