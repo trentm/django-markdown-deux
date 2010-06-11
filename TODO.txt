@@ -1,0 +1,5 @@
+- test with code site
+- add cheatsheet template
+- finish README
+- setup.py and release to pypi
+- announce elsewhere? django-users? django-hotapps?
