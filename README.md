@@ -41,8 +41,8 @@ Choose the *one* of the following that works best for you:
 TODO: pip/pypm instructions when have this up on pypi
 
 
-Note that django-markdown-deux requires the [python-markdown2
-library](http://code.google.com/p/python-markdown2]:
+Note that **django-markdown-deux requires the [python-markdown2
+library](http://code.google.com/p/python-markdown2)**:
 
     svn ls http://python-markdown2.googlecode.com/svn/tags
     svn co http://python-markdown2.googlecode.com/svn/tags/$tagname python-markdown2
@@ -58,14 +58,15 @@ library](http://code.google.com/p/python-markdown2]:
 
 1. Add "markdown_deux" to `INSTALLED_APPS` in your project's "settings.py".
 
-2. Optionally set some of the `MARKDOWN_DUEX_*` settings. See the [Settings
+2. Optionally set some of the `MARKDOWN_DEUX_*` settings. See the [Settings
    section](#settings) below.
 
 
 # Usage
 
-The markdown_deux facilities typically take an option "style" argument. This
-is a name for a set of options to the `python-markdown2` processor. See the
+The markdown_deux facilities typically take an optional "style" argument. This
+is a name for a set of options to the `python-markdown2` processor. There is
+a "default" style that is used if not argument is given. See the
 `MARKDOWN_DEUX_STYLES` setting below for more.
 
 ## `markdown` template filter
@@ -124,5 +125,85 @@ processing in your Python code (e.g. in a view, in a model `.save()` method).
 
 # Settings
 
+All settings for this app are optional.
+
+## `MARKDOWN_DEUX_STYLES` setting
+
+A mapping of style name to a dict of keyword arguments for python-markdown2's
+`markdown2.markdown(text, **kwargs)`. For example the default setting is
+effectively:
+    
+    MARKDOWN_DEUX_STYLES = {
+        "default" {
+            "extras": {
+                "code-friendly": None,
+            },
+            "safe_mode": "escape",
+        },
+    }
+
+I.e. only the "default" style is defined and it just uses the [code-friendly
+extra](http://code.google.com/p/python-markdown2/wiki/CodeFriendly) and escapes
+raw HTML in the given Markdown (for safety).
+
+Here is how you might add styles of your own, and preserve the default style:
+
+    # settings.py
+    from markdown_deux.conf.settings import MARKDOWN_DEUX_DEFAULT_STYLE
+    
+    MARKDOWN_DEUX_STYLES = {
+        "default": MARKDOWN_DEUX_DEFAULT_STYLE,
+        "trusted": {
+            "extras": {
+                "code-friendly": None,
+            },
+            # Allow raw HTML (WARNING: don't use this for user generated
+            # Markdown for your site!).
+            "safe_mode": False,
+        }
+        # Here is what http://code.activestate.com/recipes/ current uses.
+        "recipe": {
+            "extras": {
+                "code-friendly": None,
+            },
+            "safe_mode": "escape",
+            "link_patterns": [
+                # Transform "Recipe 123" in a link.
+                (re.compile(r"recipe\s+#?(\d+)\b", re.I),
+                 r"http://code.activestate.com/recipes/\1/"),
+            ],
+            "extras": {
+                "code-friendly": None,
+                "pyshell": None,
+                "demote-headers": 3,
+                "link-patterns": None,
+                # `class` attribute put on `pre` tags to enable using
+                # <http://code.google.com/p/google-code-prettify/> for syntax
+                # highlighting.
+                "html-classes": {"pre": "prettyprint"},
+                "cuddled-lists": None,
+                "footnotes": None,
+                "header-ids": None,
+            },
+            "safe_mode": "escape",
+        }
+    }
+    
+MARKDOWN_DEUX_STYLES = getattr(settings, "MARKDOWN_DEUX_STYLES",
+
 TODO
+
+## `MARKDOWN_DEUX_HELP_URL` setting
+
+A URL for to which to link for full markdown syntax default. The default is
+<http://daringfireball.net/projects/markdown/syntax>, the canonical Markdown
+syntax reference. However, if your site uses Markdown with specific tweaks,
+you may prefer to have your own override. For example, [ActiveState
+Code](http://code.activestate.com) uses:
+
+    MARKDOWN_DEUX_HELP_URL = "/help/markdown/"
+
+To link to [its own Markdown syntax notes
+URL](http://code.activestate.com/help/markdown/).
+
 
