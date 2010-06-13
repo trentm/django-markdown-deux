@@ -28,13 +28,13 @@ Choose the *one* of the following that works best for you:
 
         git clone git://github.com/trentm/django-markdown-deux.git
 
-  You might want a particular tag:
+    You might want a particular tag:
 
         cd django-markdown-deux
         git tag -l   # list available tags
         git checkout $tagname
 
-  Then you'll need the "lib" subdir on your PYTHONPATH:
+    Then you'll need the "lib" subdir on your PYTHONPATH:
 
         python setup.py install # or 'export PYTHONPATH=`pwd`/lib:$PYTHONPATH'
 
