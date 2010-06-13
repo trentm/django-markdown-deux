@@ -1,3 +1,4 @@
 - finish README
+- Makefile.py from eol
 - setup.py and release to pypi
 - announce elsewhere? django-users? django-hotapps?
