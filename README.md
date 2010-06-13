@@ -134,7 +134,7 @@ A mapping of style name to a dict of keyword arguments for python-markdown2's
 effectively:
     
     MARKDOWN_DEUX_STYLES = {
-        "default" {
+        "default": {
             "extras": {
                 "code-friendly": None,
             },
