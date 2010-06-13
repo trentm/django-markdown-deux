@@ -157,7 +157,7 @@ Here is how you might add styles of your own, and preserve the default style:
             "extras": {
                 "code-friendly": None,
             },
-            # Allow raw HTML (WARNING: don't use this for user generated
+            # Allow raw HTML (WARNING: don't use this for user-generated
             # Markdown for your site!).
             "safe_mode": False,
         }
@@ -189,17 +189,16 @@ Here is how you might add styles of your own, and preserve the default style:
         }
     }
     
-MARKDOWN_DEUX_STYLES = getattr(settings, "MARKDOWN_DEUX_STYLES",
-
-TODO
 
 ## `MARKDOWN_DEUX_HELP_URL` setting
 
-A URL for to which to link for full markdown syntax default. The default is
-<http://daringfireball.net/projects/markdown/syntax>, the canonical Markdown
-syntax reference. However, if your site uses Markdown with specific tweaks,
-you may prefer to have your own override. For example, [ActiveState
-Code](http://code.activestate.com) uses:
+A URL for to which to link for full markdown syntax default. This link is only
+in the out of the `markdown_allowed` and `markdown_cheatsheet` template tags.
+
+The default is <http://daringfireball.net/projects/markdown/syntax>, the
+canonical Markdown syntax reference. However, if your site uses Markdown with
+specific tweaks, you may prefer to have your own override. For example,
+[ActiveState Code](http://code.activestate.com) uses:
 
     MARKDOWN_DEUX_HELP_URL = "/help/markdown/"
 
