@@ -58,8 +58,8 @@ library](http://code.google.com/p/python-markdown2)**:
 
 1. Add "markdown_deux" to `INSTALLED_APPS` in your project's "settings.py".
 
-2. Optionally set some of the `MARKDOWN_DEUX_*` settings. See the [Settings
-   section](#settings) below.
+2. Optionally set some of the `MARKDOWN_DEUX_*` settings. See the "Settings"
+   section below.
 
 
 # Usage
