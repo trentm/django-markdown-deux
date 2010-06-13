@@ -64,25 +64,63 @@ library](http://code.google.com/p/python-markdown2]:
 
 # Usage
 
+The markdown_deux facilities typically take an option "style" argument. This
+is a name for a set of options to the `python-markdown2` processor. See the
+`MARKDOWN_DEUX_STYLES` setting below for more.
+
 ## `markdown` template filter
 
-TODO
+    {% load markdown_deux_tags %}
+    ...
+    {{ myvar|markdown:"STYLE" }}      {# convert `myvar` to HTML using the "STYLE" style #}
+    {{ myvar|markdown }}              {# same as `{{ myvar|markdown:"default"}}` #}
 
-## `markdown` block tag
+## `markdown` template block tag
 
-TODO
+    {% load markdown_deux_tags %}
+    ...
+    {% markdown STYLE %}        {# can omit "STYLE" to use the "default" style #}
+    This is some **cool**
+    [Markdown](http://daringfireball.net/projects/markdown/)
+    text here.
+    {% endmarkdown %]
 
-## `markdown_allowed` tag
+## `markdown_allowed` template tag
 
-TODO
+In a template:
+
+    {% markdown_allowed %}
+
+will emit a short HTML blurb that says Markdown syntax is allowed. This can be
+handy for placing under form elements that accept markdown syntax. You can also
+use it as the `help_text` for a form field something like:
+
+    # myapp/forms.py
+    from markdown_deux.templatetags.markdown_deux_tags import markdown_allowed
+    class MyForm(forms.Form):
+        #...
+        description = forms.CharField(
+            label="Description (required)",
+            widget=forms.Textarea(attrs={"rows": 5}),
+            help_text=_secondary_span("A brief description of your thing.<br/> "
+                markdown_allowed()),
+            required=True)
+
 
 ## `markdown_cheatsheet` tag
 
-TODO
+    {% markdown_cheatsheet %}
+
+This outputs HTML giving a narrow (appropriate for, e.g., a sidebar) listing of
+some of the more common Markdown features.
+
 
 ## `markdown_deux.markdown(TEXT, STYLE)` in your Python code
 
-TODO
+The `markdown` filter and block tags above ultimately use this
+`markdown_deux.markdown(...)` function. You might find it useful to do Markdown
+processing in your Python code (e.g. in a view, in a model `.save()` method).
+
 
 # Settings
 
