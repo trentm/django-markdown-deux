@@ -66,7 +66,7 @@ library](http://code.google.com/p/python-markdown2)**:
 
 The markdown_deux facilities typically take an optional "style" argument. This
 is a name for a set of options to the `python-markdown2` processor. There is
-a "default" style that is used if not argument is given. See the
+a "default" style that is used if no argument is given. See the
 `MARKDOWN_DEUX_STYLES` setting below for more.
 
 ## `markdown` template filter
@@ -104,7 +104,7 @@ use it as the `help_text` for a form field something like:
             label="Description (required)",
             widget=forms.Textarea(attrs={"rows": 5}),
             help_text=_secondary_span("A brief description of your thing.<br/> "
-                markdown_allowed()),
+                + markdown_allowed()),
             required=True)
 
 
