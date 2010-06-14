@@ -1,4 +1,4 @@
-- finish README
-- Makefile.py from eol
 - setup.py and release to pypi
+- TODOs in README
 - announce elsewhere? django-users? django-hotapps?
+- TODO: move Makefile.py's parameterized `cut_a_release` back to eol's Makefile
