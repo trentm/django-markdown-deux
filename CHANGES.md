@@ -1,6 +1,10 @@
 # django-markdown-deux change log
 
 
+## django-markdown-deux 1.0.3 (not yet released)
+
+(nothing yet)
+
 ## django-markdown-deux 1.0.2
 
 - Ensure all necessary files includes in setup.py sdist package.
