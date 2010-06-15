@@ -1,6 +1,10 @@
 # django-markdown-deux change log
 
 
+## django-markdown-deux 1.0.2 (not yet released)
+
+(nothing yet)
+
 ## django-markdown-deux 1.0.1
 
 - Fix overriding of `settings.MARKDOWN_DEUX_HELP_URL` in the project "settings.py".

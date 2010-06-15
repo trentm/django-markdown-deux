@@ -8,7 +8,7 @@ python-markdown2 library.
 See <http://github.com/trentm/django-markdown-deux> for more info.
 """
 
-__version_info__ = (1, 0, 1)
+__version_info__ = (1, 0, 2)
 __version__ = '1.0.1'
 __author__ = "Trent Mick"
 
