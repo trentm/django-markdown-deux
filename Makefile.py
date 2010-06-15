@@ -96,17 +96,18 @@ class cut_a_release(Task):
                 % (changes_path, version), self.log.debug)
 
         # Tag version and push.
-        self.log.info("tag the release")
-        if not DRY_RUN:
+        curr_tags = set(t for t in _capture_stdout(["git", "tag", "-l"]).split('\n') if t)
+        if not DRY_RUN and version not in curr_tags:
+            self.log.info("tag the release")
             sh.run('git tag -a "%s" -m "version %s"' % (version, version),
                 self.log.debug)
             sh.run('git push --tags', self.log.debug)
-        
+
         # Release to PyPI.
         self.log.info("release to pypi")
         if not DRY_RUN:
             mk("pypi_upload")
-        
+
         # Commits to prepare for future dev and push.
         next_version = self._get_next_version(version)
         self.log.info("prepare for future dev (version %s)", next_version)
@@ -121,7 +122,7 @@ class cut_a_release(Task):
             f = codecs.open(changes_path, 'w', 'utf-8')
             f.write(changes_txt)
             f.close()
-        
+
         ver_path = join(self.dir, normpath(self.version_py_path))
         ver_content = codecs.open(ver_path, 'r', 'utf-8').read()
         version_tuple = self._tuple_from_version(version)
@@ -541,4 +542,7 @@ def _setup_command_prefix():
         prefix = "COPY_EXTENDED_ATTRIBUTES_DISABLE=1 "
     return prefix
 
-
+def _capture_stdout(argv):
+    import subprocess
+    p = subprocess.Popen(argv, stdout=subprocess.PIPE)
+    return p.communicate()[0]
