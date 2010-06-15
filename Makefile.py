@@ -52,18 +52,18 @@ class cut_a_release(Task):
         # Confirm
         if not DRY_RUN:
             answer = query_yes_no("* * *\n"
-                "Are you sure you want cut a v%s release?\n"
+                "Are you sure you want cut a %s release?\n"
                 "This will involved commits and a release to pypi." % version,
                 default="no")
             if answer != "yes":
                 self.log.info("user abort")
                 return
             print "* * *"
-        self.log.info("cutting a v%s release", version)
+        self.log.info("cutting a %s release", version)
 
         # Checks: Ensure there is a section in changes for this version.
         changes_path = join(self.dir, "CHANGES.md")
-        changes_txt = codecs.open(changes_path, 'r', 'utf-8').read()
+        changes_txt = changes_txt_before = codecs.open(changes_path, 'r', 'utf-8').read()
         changes_sections = self._changes_parser.findall(changes_txt)
         top_ver = changes_sections[0][0]
         if top_ver != version:
@@ -72,22 +72,27 @@ class cut_a_release(Task):
                 % (top_ver, version))
         top_nyr = changes_sections[0][1]
         if not top_nyr:
-            raise MkError("top section in `CHANGES.md' doesn't have "
-                "the expected '(not yet released)' marker: has this been "
-                "released already?")
+            answer = query_yes_no("\n* * *\n"
+                "The top section in `CHANGES.md' doesn't have the expected\n"
+                "'(not yet released)' marker. Has this been released already?",
+                default="yes")
+            if answer != "no":
+                self.log.info("abort")
+                return
+            print "* * *"
         top_body = changes_sections[0][2]
         if top_body.strip() == "(nothing yet)":
             raise MkError("top section body is `(nothing yet)': it looks like "
                 "nothing has been added to this release")
         
         # Commits to prepare release.
-        self.log.info("prepare `CHANGES.md' for release")
         changes_txt = changes_txt.replace(" (not yet released)", "", 1)
-        if not DRY_RUN:
+        if not DRY_RUN and changes_txt != changes_txt_before:
+            self.log.info("prepare `CHANGES.md' for release")
             f = codecs.open(changes_path, 'w', 'utf-8')
             f.write(changes_txt)
             f.close()
-            sh.run('git commit %s -m "prepare for v%s release"'
+            sh.run('git commit %s -m "prepare for %s release"'
                 % (changes_path, version), self.log.debug)
 
         # Tag version and push.
@@ -95,7 +100,7 @@ class cut_a_release(Task):
         if not DRY_RUN:
             sh.run('git tag -a "%s" -m "version %s"' % (version, version),
                 self.log.debug)
-            sh.run('git --tags push', self.log.debug)
+            sh.run('git push --tags', self.log.debug)
         
         # Release to PyPI.
         self.log.info("release to pypi")
