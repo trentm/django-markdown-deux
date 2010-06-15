@@ -36,7 +36,7 @@ class pypi(Task):
 class cut_a_release(Task):
     """automate the steps for cutting a release
     
-    See 'docs/devguide.markdown' in <http://github.com/trentm/eol> for details.
+    See 'docs/devguide.md' in <http://github.com/trentm/eol> for details.
     """
     proj_name = "django-markdown-deux"
     version_py_path = "lib/markdown_deux/__init__.py"
@@ -142,7 +142,6 @@ class cut_a_release(Task):
             sh.run('git commit %s %s -m "prep for future dev"' % (
                 changes_path, ver_path))
             sh.run('git push')
-        
     
     def _tuple_from_version(self, version):
         def _intify(s):
