@@ -62,17 +62,17 @@ class cut_a_release(Task):
         self.log.info("cutting a v%s release", version)
 
         # Checks: Ensure there is a section in changes for this version.
-        changes_path = join(self.dir, "CHANGES.markdown")
+        changes_path = join(self.dir, "CHANGES.md")
         changes_txt = codecs.open(changes_path, 'r', 'utf-8').read()
         changes_sections = self._changes_parser.findall(changes_txt)
         top_ver = changes_sections[0][0]
         if top_ver != version:
-            raise MkError("top section in `CHANGES.markdown' is for "
+            raise MkError("top section in `CHANGES.md' is for "
                 "version %r, expected version %r: aborting"
                 % (top_ver, version))
         top_nyr = changes_sections[0][1]
         if not top_nyr:
-            raise MkError("top section in `CHANGES.markdown' doesn't have "
+            raise MkError("top section in `CHANGES.md' doesn't have "
                 "the expected '(not yet released)' marker: has this been "
                 "released already?")
         top_body = changes_sections[0][2]
@@ -81,7 +81,7 @@ class cut_a_release(Task):
                 "nothing has been added to this release")
         
         # Commits to prepare release.
-        self.log.info("prepare `CHANGES.markdown' for release")
+        self.log.info("prepare `CHANGES.md' for release")
         changes_txt = changes_txt.replace(" (not yet released)", "", 1)
         if not DRY_RUN:
             f = codecs.open(changes_path, 'w', 'utf-8')
