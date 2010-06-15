@@ -9,7 +9,7 @@ See <http://github.com/trentm/django-markdown-deux> for more info.
 """
 
 __version_info__ = (1, 0, 2)
-__version__ = '1.0.1'
+__version__ = '.'.join(map(str, __version_info__))
 __author__ = "Trent Mick"
 
 
@@ -17,8 +17,6 @@ def markdown(text, style="default"):
     if not text:
         return ""
     import markdown2
-    print "XXX markdown_deux.markdown(style=%r) -> %r" % (style, get_style(style))
-    
     return markdown2.markdown(text, **get_style(style))
 
 def get_style(style):
