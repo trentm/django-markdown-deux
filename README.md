@@ -24,6 +24,16 @@ the same set of python-markdown2 options.
 
 Choose the *one* of the following that works best for you:
 
+- Install the latest release from PyPI:
+
+        pip install django-markdown-deux
+
+    or, if you use [ActivePython](http://www.activestate.com/activepython):
+
+        pypm install django-markdown-deux
+
+    These should install the dependent `python-markdown2` package.
+
 - Get a git clone of the source tree:
 
         git clone git://github.com/trentm/django-markdown-deux.git
@@ -38,20 +48,13 @@ Choose the *one* of the following that works best for you:
 
         python setup.py install # or 'export PYTHONPATH=`pwd`/lib:$PYTHONPATH'
 
-TODO: pip/pypm instructions when have this up on pypi
+    You'll also need the [python-markdown2
+    library](http://code.google.com/p/python-markdown2):
 
-
-Note that **django-markdown-deux requires the [python-markdown2
-library](http://code.google.com/p/python-markdown2)**:
-
-    svn ls http://python-markdown2.googlecode.com/svn/tags
-    svn co http://python-markdown2.googlecode.com/svn/tags/$tagname python-markdown2
-    cd python-markdown2
-    python setup.py install   # or 'export PYTHONPATH=`pwd`/python-markdown2/lib'
-
-    # or
-
-    pip install markdown2     # or with ActivePython: 'pypm install markdown2'
+        svn ls http://python-markdown2.googlecode.com/svn/tags
+        svn co http://python-markdown2.googlecode.com/svn/tags/$tagname python-markdown2
+        cd python-markdown2
+        python setup.py install   # or 'export PYTHONPATH=`pwd`/python-markdown2/lib'
 
 
 # Django project setup

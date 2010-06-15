@@ -3,7 +3,8 @@
 
 ## django-markdown-deux 1.0.3 (not yet released)
 
-(nothing yet)
+- Add markdown2 dependency in setup.py.
+
 
 ## django-markdown-deux 1.0.2
 
