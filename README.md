@@ -87,7 +87,7 @@ a "default" style that is used if no argument is given. See the
     This is some **cool**
     [Markdown](http://daringfireball.net/projects/markdown/)
     text here.
-    {% endmarkdown %]
+    {% endmarkdown %}
 
 ## `markdown_allowed` template tag
 
