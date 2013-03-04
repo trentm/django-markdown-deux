@@ -3,7 +3,9 @@
 
 ## django-markdown-deux 1.0.4 (not yet released)
 
-(nothing yet)
+- [pull #3] Make the "open markdown syntax" link open in a new tab by default.
+  (by github.com/mrooney).
+
 
 ## django-markdown-deux 1.0.3
 
