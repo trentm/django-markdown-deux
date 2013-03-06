@@ -1,6 +1,6 @@
 A small Django app that provides template tags for using
 [Markdown](http://daringfireball.net/projects/markdown/) using the
-[python-markdown2](http://code.google.com/p/python-markdown2/) library.
+[python-markdown2](https://github.com/trentm/python-markdown2) library.
 
 # What's with the "deux" in the name?
 
@@ -13,7 +13,7 @@ years: might as well put it to use.
 
 Because I wanted to do something slightly different. Django-markdown2's
 `markdown` filter takes
-["extras"](http://code.google.com/p/python-markdown2/wiki/Extras) as arguments
+["extras"](https://github.com/trentm/python-markdown2/wiki/Extras) as arguments
 -- with the one exception that "safe" is transformed to python-markdown2's
 "safe_mode" argument. This is handy for quick usage. My use case is more
 commonly: lots of `markdown` filter and block usage in my Django templates with
@@ -49,10 +49,9 @@ Choose the *one* of the following that works best for you:
         python setup.py install # or 'export PYTHONPATH=`pwd`/lib:$PYTHONPATH'
 
     You'll also need the [python-markdown2
-    library](http://code.google.com/p/python-markdown2):
+    library](https://github.com/trentm/python-markdown2):
 
-        svn ls http://python-markdown2.googlecode.com/svn/tags
-        svn co http://python-markdown2.googlecode.com/svn/tags/$tagname python-markdown2
+        git clone git@github.com:trentm/python-markdown2.git
         cd python-markdown2
         python setup.py install   # or 'export PYTHONPATH=`pwd`/python-markdown2/lib'
 
@@ -135,7 +134,7 @@ All settings for this app are optional.
 A mapping of style name to a dict of keyword arguments for python-markdown2's
 `markdown2.markdown(text, **kwargs)`. For example the default setting is
 effectively:
-    
+
     MARKDOWN_DEUX_STYLES = {
         "default": {
             "extras": {
@@ -146,14 +145,14 @@ effectively:
     }
 
 I.e. only the "default" style is defined and it just uses the [code-friendly
-extra](http://code.google.com/p/python-markdown2/wiki/CodeFriendly) and escapes
+extra](https://github.com/trentm/python-markdown2/wiki/code-friendly) and escapes
 raw HTML in the given Markdown (for safety).
 
 Here is how you might add styles of your own, and preserve the default style:
 
     # settings.py
     from markdown_deux.conf.settings import MARKDOWN_DEUX_DEFAULT_STYLE
-    
+
     MARKDOWN_DEUX_STYLES = {
         "default": MARKDOWN_DEUX_DEFAULT_STYLE,
         "trusted": {
@@ -191,7 +190,7 @@ Here is how you might add styles of your own, and preserve the default style:
             "safe_mode": "escape",
         }
     }
-    
+
 
 ## `MARKDOWN_DEUX_HELP_URL` setting
 
@@ -207,5 +206,3 @@ specific tweaks, you may prefer to have your own override. For example,
 
 To link to [its own Markdown syntax notes
 URL](http://code.activestate.com/help/markdown/).
-
-
