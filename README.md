@@ -163,7 +163,7 @@ Here is how you might add styles of your own, and preserve the default style:
             # Markdown for your site!).
             "safe_mode": False,
         }
-        # Here is what http://code.activestate.com/recipes/ current uses.
+        # Here is what http://code.activestate.com/recipes/ currently uses.
         "recipe": {
             "extras": {
                 "code-friendly": None,
@@ -194,8 +194,9 @@ Here is how you might add styles of your own, and preserve the default style:
 
 ## `MARKDOWN_DEUX_HELP_URL` setting
 
-A URL for to which to link for full markdown syntax default. This link is only
-in the out of the `markdown_allowed` and `markdown_cheatsheet` template tags.
+A URL for to which to link for full markdown syntax default. This link is
+only in the output of the `markdown_allowed` and `markdown_cheatsheet`
+template tags.
 
 The default is <http://daringfireball.net/projects/markdown/syntax>, the
 canonical Markdown syntax reference. However, if your site uses Markdown with
