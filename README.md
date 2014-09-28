@@ -4,7 +4,7 @@ A small Django app that provides template tags for using
 
 # What's with the "deux" in the name?
 
-The obvious name for this project in `django-markdown2`. However, there
+The obvious name for this project is `django-markdown2`. However, there
 [already is one!](http://github.com/svetlyak40wt/django-markdown2) and name
 confusion doesn't help anybody. Plus, I took French immersion in school for 12
 years: might as well put it to use.
@@ -15,7 +15,7 @@ Because I wanted to do something slightly different. Django-markdown2's
 `markdown` filter takes
 ["extras"](https://github.com/trentm/python-markdown2/wiki/Extras) as arguments
 -- with the one exception that "safe" is transformed to python-markdown2's
-"safe_mode" argument. This is handy for quick usage. My use case is more
+`safe_mode` argument. This is handy for quick usage. My use case is more
 commonly: lots of `markdown` filter and block usage in my Django templates with
 the same set of python-markdown2 options.
 
@@ -58,7 +58,7 @@ Choose the *one* of the following that works best for you:
 
 # Django project setup
 
-1. Add "markdown_deux" to `INSTALLED_APPS` in your project's "settings.py".
+1. Add `markdown_deux` to `INSTALLED_APPS` in your project's "settings.py".
 
 2. Optionally set some of the `MARKDOWN_DEUX_*` settings. See the "Settings"
    section below.
@@ -66,7 +66,7 @@ Choose the *one* of the following that works best for you:
 
 # Usage
 
-The markdown_deux facilities typically take an optional "style" argument. This
+The `markdown_deux` facilities typically take an optional "style" argument. This
 is a name for a set of options to the `python-markdown2` processor. There is
 a "default" style that is used if no argument is given. See the
 `MARKDOWN_DEUX_STYLES` setting below for more.

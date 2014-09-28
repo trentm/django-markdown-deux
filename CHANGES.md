@@ -3,7 +3,8 @@
 
 ## django-markdown-deux 1.0.5 (not yet released)
 
-(nothing yet)
+- [pull #6] A fix for python3.
+
 
 ## django-markdown-deux 1.0.4
 
