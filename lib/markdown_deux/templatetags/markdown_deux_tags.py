@@ -1,6 +1,10 @@
 from django import template
 from django.utils.safestring import mark_safe
-from django.utils.encoding import force_unicode
+try:
+    from django.utils.encoding import force_text
+except ImportError:
+    from django.utils.encoding import force_unicode as force_text
+
 import markdown_deux
 from markdown_deux.conf import settings
 
@@ -27,7 +31,7 @@ def markdown_filter(value, style="default"):
         if settings.DEBUG:
             raise template.TemplateSyntaxError("Error in `markdown` filter: "
                 "The python-markdown2 library isn't installed.")
-        return force_unicode(value)
+        return force_text(value)
 markdown_filter.is_safe = True
 
 
@@ -57,7 +61,7 @@ class MarkdownNode(template.Node):
             if settings.DEBUG:
                 raise template.TemplateSyntaxError("Error in `markdown` tag: "
                     "The python-markdown2 library isn't installed.")
-            return force_unicode(value)
+            return force_text(value)
 
 
 @register.inclusion_tag("markdown_deux/markdown_cheatsheet.html")
