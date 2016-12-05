@@ -1,4 +1,5 @@
 from django import template
+from django.utils.html import format_html
 from django.utils.safestring import mark_safe
 try:
     from django.utils.encoding import force_text
@@ -71,8 +72,8 @@ def markdown_cheatsheet():
 
 @register.simple_tag
 def markdown_allowed():
-    return ('<a href="%s" target="_blank">Markdown syntax</a> allowed, but no raw HTML. '
-        'Examples: **bold**, *italic*, indent 4 spaces for a code block.'
-        % settings.MARKDOWN_DEUX_HELP_URL)
-
-
+    return format_html(
+        '<a href="%s" target="_blank">Markdown syntax</a> allowed, '
+        'but no raw HTML. '
+        'Examples: **bold**, *italic*, indent 4 spaces for a code block.',
+        mark_safe(settings.MARKDOWN_DEUX_HELP_URL))
