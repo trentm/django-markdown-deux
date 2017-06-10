@@ -151,10 +151,14 @@ raw HTML in the given Markdown (for safety).
 Here is how you might add styles of your own, and preserve the default style:
 
     # settings.py
-    from markdown_deux.conf.settings import MARKDOWN_DEUX_DEFAULT_STYLE
 
     MARKDOWN_DEUX_STYLES = {
-        "default": MARKDOWN_DEUX_DEFAULT_STYLE,
+        "default": {
+            "extras": {
+                "code-friendly": None,
+            },
+            "safe_mode": "escape",
+        },
         "trusted": {
             "extras": {
                 "code-friendly": None,
@@ -162,7 +166,7 @@ Here is how you might add styles of your own, and preserve the default style:
             # Allow raw HTML (WARNING: don't use this for user-generated
             # Markdown for your site!).
             "safe_mode": False,
-        }
+        },
         # Here is what http://code.activestate.com/recipes/ currently uses.
         "recipe": {
             "extras": {
@@ -174,6 +178,8 @@ Here is how you might add styles of your own, and preserve the default style:
                 (re.compile(r"recipe\s+#?(\d+)\b", re.I),
                  r"http://code.activestate.com/recipes/\1/"),
             ],
+        },
+        "recipe2": {
             "extras": {
                 "code-friendly": None,
                 "pyshell": None,
@@ -188,7 +194,7 @@ Here is how you might add styles of your own, and preserve the default style:
                 "header-ids": None,
             },
             "safe_mode": "escape",
-        }
+        },
     }
 
 
