@@ -168,7 +168,7 @@ Here is how you might add styles of your own, and preserve the default style:
             # Allow raw HTML (WARNING: don't use this for user-generated
             # Markdown for your site!).
             "safe_mode": False,
-        }
+        },
         # Here is what http://code.activestate.com/recipes/ currently uses.
         "recipe": {
             "extras": {
