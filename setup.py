@@ -18,6 +18,7 @@ setup(name='django-markdown-deux',
     version=markdown_deux.__version__,
     description="a Django app that provides template tags for using Markdown (using the python-markdown2 processor)",
     long_description=README,
+    long_description_content_type='text/markdown',
     classifiers=[c.strip() for c in """
         Development Status :: 5 - Production/Stable
         Environment :: Web Environment
