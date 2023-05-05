@@ -1,9 +1,11 @@
 # django-markdown-deux change log
 
 
-## django-markdown-deux 1.0.6 (not yet released)
+## django-markdown-deux 1.0.6
 
-(nothing yet)
+- [pull #34] Fix support for modern Django (by github.com/melkon98)
+- [pull #12] Fix typo in rendered html (by github.com/mlissner)
+- [pull #30] Fix typo in README (by github.com/martinleblanc)
 
 ## django-markdown-deux 1.0.5
 
