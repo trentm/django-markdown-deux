@@ -1,9 +1,3 @@
-**Note: This repo is unmaintained and has been for a while. If you are
-interested in taking over this repo, then please let me know (trentm at
-google's email thing).**
-
-* * *
-
 A small Django app that provides template tags for using
 [Markdown](http://daringfireball.net/projects/markdown/) using the
 [python-markdown2](https://github.com/trentm/python-markdown2) library.
