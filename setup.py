@@ -25,14 +25,14 @@ setup(name='django-markdown-deux',
         Intended Audience :: Developers
         License :: OSI Approved :: MIT License
         Operating System :: OS Independent
-        Programming Language :: Python :: 2
+        Programming Language :: Python :: 3
         Topic :: Internet :: WWW/HTTP
         """.split('\n') if c.strip()],
     keywords='django markdown markdown2 text markup html',
     author='Trent Mick',
     author_email='trentm@gmail.com',
-    maintainer='Trent Mick',
-    maintainer_email='trentm@gmail.com',
+    maintainer='Riccardo Magliocchetti',
+    maintainer_email='riccardo.magliocchetti@gmail.com',
     url='http://github.com/trentm/django-markdown-deux',
     license='MIT',
     install_requires = ['markdown2'],
