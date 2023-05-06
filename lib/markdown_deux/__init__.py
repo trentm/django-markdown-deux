@@ -16,7 +16,9 @@ __author__ = "Trent Mick"
 def markdown(text, style="default"):
     if not text:
         return ""
+    import re
     import markdown2
+    text = re.sub(r'\[(.*?)\]\(javascript:(.*?)\)', r'\[\1\]\(javascript:\2\)', text)
     return markdown2.markdown(text, **get_style(style))
 
 def get_style(style):
