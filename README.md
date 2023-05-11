@@ -207,3 +207,18 @@ specific tweaks, you may prefer to have your own override. For example,
 
 To link to [its own Markdown syntax notes
 URL](http://code.activestate.com/help/markdown/).
+
+If you wish to avoid hardcoding (and thus duplicating a URL), you can also use
+`reverse_lazy` in your settings.py file. So instead of the above, in `urls.py`, 
+you can write:
+
+    url(r'^/my/path/$', my_view_function, name='markdown_help')
+    
+And in settings.py you can write:
+
+    from django.core.urlresolvers import reverse_lazy
+    MARKDOWN_DEUX_HELP_URL = reverse_lazy('markdown_help')
+
+That will accomplish the same as above, but without the repitition. Note too
+that you need to use `reverse_lazy`, as the URL resolvers are loaded after
+`settings.py` is loaded.
